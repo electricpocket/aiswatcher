@@ -5,6 +5,7 @@ CMakeFiles/aisdecoder.dir/src/main.c.o
  ../src/lib/alsaaudio/alsaaudio.h
  ../src/lib/callbacks.h
  /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/main.c
+ /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/main.h
  /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/sounddecoder.h
  config.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o

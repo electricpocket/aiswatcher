@@ -4,6 +4,7 @@
 CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/lib/alsaaudio/alsaaudio.h
 CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/lib/callbacks.h
 CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/main.c
+CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/main.h
 CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/sounddecoder.h
 CMakeFiles/aisdecoder.dir/src/main.c.o: config.h
 
