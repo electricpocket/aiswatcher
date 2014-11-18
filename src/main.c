@@ -1,7 +1,7 @@
 /*
  *    main.cpp  --  AIS Decoder
  *
- *    Copyright (C) 2013
+ *    Copyright (C) 2014 Pocket Mariner Ltd (support@pocketmariner.com ) and
  *      Astra Paging Ltd / AISHub (info@aishub.net)
  *
  *    AISDecoder is free software; you can redistribute it and/or modify
