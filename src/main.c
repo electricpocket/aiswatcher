@@ -12,7 +12,7 @@
  *    AISDecoder uses parts of GNUAIS project (http://gnuais.sourceforge.net/)
  *
  */
-
+#include <main.h>
 #ifndef WIN32
 #include <netdb.h>
 #include <sys/socket.h>
@@ -394,5 +394,56 @@ int initSocket(const char *host, const char *portname) {
         }
     }
     return 1;
+}
+
+void modesInitRTLSDR(void) {
+    int j;
+    int device_count;
+    char vendor[256], product[256], serial[256];
+
+    device_count = rtlsdr_get_device_count();
+    if (!device_count) {
+        fprintf(stderr, "No supported RTLSDR devices found.\n");
+        exit(1);
+    }
+
+    fprintf(stderr, "Found %d device(s):\n", device_count);
+    for (j = 0; j < device_count; j++) {
+        rtlsdr_get_device_usb_strings(j, vendor, product, serial);
+        fprintf(stderr, "%d: %s, %s, SN: %s %s\n", j, vendor, product, serial,
+            (j == Modes.dev_index) ? "(currently selected)" : "");
+    }
+
+    if (rtlsdr_open(&Modes.dev, Modes.dev_index) < 0) {
+        fprintf(stderr, "Error opening the RTLSDR device: %s\n",
+            strerror(errno));
+        exit(1);
+    }
+
+    // Set gain, frequency, sample rate, and reset the device
+    rtlsdr_set_tuner_gain_mode(Modes.dev,
+        (Modes.gain == MODES_AUTO_GAIN) ? 0 : 1);
+    if (Modes.gain != MODES_AUTO_GAIN) {
+        if (Modes.gain == MODES_MAX_GAIN) {
+            // Find the maximum gain available
+            int numgains;
+            int gains[100];
+
+            numgains = rtlsdr_get_tuner_gains(Modes.dev, gains);
+            Modes.gain = gains[numgains-1];
+            fprintf(stderr, "Max available gain is: %.2f\n", Modes.gain/10.0);
+        }
+        rtlsdr_set_tuner_gain(Modes.dev, Modes.gain);
+        fprintf(stderr, "Setting gain to: %.2f\n", Modes.gain/10.0);
+    } else {
+        fprintf(stderr, "Using automatic gain control.\n");
+    }
+    rtlsdr_set_freq_correction(Modes.dev, Modes.ppm_error);
+    if (Modes.enable_agc) rtlsdr_set_agc_mode(Modes.dev, 1);
+    rtlsdr_set_center_freq(Modes.dev, Modes.freq);
+    rtlsdr_set_sample_rate(Modes.dev, MODES_DEFAULT_RATE);
+    rtlsdr_reset_buffer(Modes.dev);
+    fprintf(stderr, "Gain reported by device: %.2f\n",
+        rtlsdr_get_tuner_gain(Modes.dev)/10.0);
 }
 
