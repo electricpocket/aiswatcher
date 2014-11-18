@@ -1,0 +1,2 @@
+/usr/bin/ar cr libaisdecoder.a  CMakeFiles/aisdecoder_static_lib.dir/src/sounddecoder.c.o CMakeFiles/aisdecoder_static_lib.dir/src/lib/filter.c.o CMakeFiles/aisdecoder_static_lib.dir/src/lib/hmalloc.c.o CMakeFiles/aisdecoder_static_lib.dir/src/lib/protodec.c.o CMakeFiles/aisdecoder_static_lib.dir/src/lib/receiver.c.o
+/usr/bin/ranlib libaisdecoder.a

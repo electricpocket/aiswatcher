@@ -1,0 +1,3 @@
+/Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles/aisdecoder.dir
+/Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles/aisdecoder_dynamic_lib.dir
+/Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles/aisdecoder_static_lib.dir

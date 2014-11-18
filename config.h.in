@@ -1,0 +1,3 @@
+#cmakedefine PROJECT_NAME "${PROJECT_NAME}"
+#cmakedefine HAVE_ALSA
+#cmakedefine HAVE_PULSEAUDIO

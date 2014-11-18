@@ -1,0 +1,1 @@
+/usr/bin/cc  -O3 -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names -s CMakeFiles/aisdecoder.dir/src/main.c.o CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o  -o aisdecoder  libaisdecoder.a 
