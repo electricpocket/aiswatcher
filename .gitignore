@@ -10,3 +10,4 @@ build/libaisdecoder.1.dylib
 build/libaisdecoder.dylib
 build/libaisdecoder.a
 build/CMakeFiles/*
+build
