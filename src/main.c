@@ -106,7 +106,7 @@ void nmea_sentence_received(const char *sentence,
 
 int main(int argc, char *argv[]) {
 	Sound_Channels channels = SOUND_CHANNELS_MONO;
-	char *host, *port, *file_name=NULL;
+	char *host=NULL,*port=NULL, *file_name=NULL;
 	const char *params=CMD_PARAMS;
 
 	int hfnd=0, pfnd=0;
