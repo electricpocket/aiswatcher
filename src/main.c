@@ -108,8 +108,8 @@ int main(int argc, char *argv[]) {
 	Sound_Channels channels = SOUND_CHANNELS_MONO;
 	char *host, *port, *file_name=NULL;
 	const char *params=CMD_PARAMS;
-	int file=0;
-	int hfnd=0, pfnd=0, afnd=0;
+
+	int hfnd=0, pfnd=0;
 
 	Modes.dev_index=0;
 	Modes.gain=40;
@@ -117,11 +117,8 @@ int main(int argc, char *argv[]) {
 	Modes.freq=161975000;
 	Modes.ppm_error=0;
 
-
 	int opt;
-	//default to read from fifo
-	file = 1;
-	afnd = 1;
+
 	protocol=0;
 	channels = SOUND_CHANNELS_MONO;
 	file_name="/tmp/aisdata";
@@ -336,7 +333,7 @@ int initSocket(const char *host, const char *portname) {
 		int portno=atoi(portname);
 		serv_addr.sin_port = htons(portno);
 
-		if (connect(sock,&serv_addr,sizeof(serv_addr)) < 0)
+		if (connect(sock,(struct sockaddr*)&serv_addr,sizeof(serv_addr)) < 0)
 		{
 			fprintf(stderr, "Failed to connect to remote socket address!\n");
 			return 0;
