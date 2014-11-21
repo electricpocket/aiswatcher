@@ -72,6 +72,10 @@ struct {                             // Internal state
 
 } Modes;
 
+extern FILE *fp;
+
+void run_rtl_fm( );
+
 void modesInitConfig();
 int verbose_device_search(char *s);
 void modesInitRTLSDR(void);

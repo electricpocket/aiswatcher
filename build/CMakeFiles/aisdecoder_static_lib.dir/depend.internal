@@ -25,13 +25,10 @@ CMakeFiles/aisdecoder_static_lib.dir/src/lib/receiver.c.o
  /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/lib/receiver.h
  config.h
 CMakeFiles/aisdecoder_static_lib.dir/src/sounddecoder.c.o
- ../src/lib/alsaaudio/alsaaudio.h
  ../src/lib/callbacks.h
  ../src/lib/hmalloc.h
  ../src/lib/protodec.h
- ../src/lib/pulseaudio/pulseaudio.h
  ../src/lib/receiver.h
- ../src/lib/winmmaudio/winmm_input.h
  /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/sounddecoder.c
  /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/sounddecoder.h
  config.h

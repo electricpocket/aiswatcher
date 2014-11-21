@@ -27,15 +27,9 @@ typedef enum {
 
 extern char errorSoundDecoder[];
 
-#ifndef WIN32
-#ifdef HAVE_ALSA
-int initSoundDecoder(const Sound_Channels _channels, const Sound_Driver _driver,const char *file, const char *_alsaDevice);
-#else
+
 int initSoundDecoder(const Sound_Channels _channels, const Sound_Driver _driver, const char *file);
-#endif
-#else
-int initSoundDecoder(const Sound_Channels _channels, const Sound_Driver _driver, const char *file, unsigned int deviceId);
-#endif
+
 void runSoundDecoder(int *stop);
 void freeSoundDecoder();
 

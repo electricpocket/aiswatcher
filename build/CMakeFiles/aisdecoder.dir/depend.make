@@ -8,13 +8,10 @@ CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/main.h
 CMakeFiles/aisdecoder.dir/src/main.c.o: ../src/sounddecoder.h
 CMakeFiles/aisdecoder.dir/src/main.c.o: config.h
 
-CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/alsaaudio/alsaaudio.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/callbacks.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/hmalloc.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/protodec.h
-CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/pulseaudio/pulseaudio.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/receiver.h
-CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/lib/winmmaudio/winmm_input.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/sounddecoder.c
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: ../src/sounddecoder.h
 CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o: config.h

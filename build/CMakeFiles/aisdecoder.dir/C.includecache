@@ -19,6 +19,8 @@ stdlib.h
 /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/main.c
 main.h
 /Users/steveb/Development/workspace/aisdecoder-1.0.0/src/main.h
+unistd.h
+-
 netdb.h
 -
 sys/socket.h
