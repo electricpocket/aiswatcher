@@ -277,7 +277,7 @@ void run_rtl_fm( )
 
 	//fprintf(stderr, "Spawning rtl_fm\n");
 
-	int succ = execv( "/usr/local/bin/rtl_fm", my_args);
+	int succ = execvp( "rtl_fm", my_args);
 	if (succ) fprintf(stderr, "Spawning rtl_fm failed %d\n",succ);
 	free(my_args[1]);
 	free(my_args[2]);
