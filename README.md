@@ -18,6 +18,8 @@ Pre-requisites
 
 Clone and build the rtl-sdr library. see http://sdr.osmocom.org/trac/wiki/rtl-sdr
 
+Make sure rtl_fm runs and it is in your path. (e.g. $PATH).
+
 Build instructions
 ==================
 
