@@ -8,7 +8,7 @@ with RTL2832U (RTL SDR usb sticks).
 see http://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/ for the radio dongles.
 
 AisWatcher decodes the radio data and converts it to AIS ascii data strings. 
-You can dump the strings to the console and also forward them to the BoatBeaconApp.com server to display on a live map view.
+You can dump the strings to the console and also forward them to the BoatBeaconApp.com server to display on a live map view and in our free Boat Watch app, available for iPhone,iPad,Mac and Android.
 
 This code is based on a rework of aisdecoder from aishub.net (http://forum.aishub.net/ais-decoder/ais-decoder-beta-release/) 
  to include rtl-sdr (http://sdr.osmocom.org/trac/wiki/rtl-sdr) to run as a single command and diplay ships on a live map web view.
