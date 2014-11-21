@@ -53,108 +53,108 @@ CMAKE_SOURCE_DIR = /Users/steveb/Development/workspace/aisdecoder-1.0.0
 CMAKE_BINARY_DIR = /Users/steveb/Development/workspace/aisdecoder-1.0.0/build
 
 #=============================================================================
-# Target rules for target CMakeFiles/aisdecoder.dir
+# Target rules for target CMakeFiles/aiswatcher.dir
 
 # All Build rule for target.
-CMakeFiles/aisdecoder.dir/all: CMakeFiles/aisdecoder_static_lib.dir/all
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/depend
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/build
+CMakeFiles/aiswatcher.dir/all: CMakeFiles/aiswatcher_static_lib.dir/all
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/depend
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles  1 2
-	@echo "Built target aisdecoder"
-.PHONY : CMakeFiles/aisdecoder.dir/all
+	@echo "Built target aiswatcher"
+.PHONY : CMakeFiles/aiswatcher.dir/all
 
 # Include target in all.
-all: CMakeFiles/aisdecoder.dir/all
+all: CMakeFiles/aiswatcher.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/aisdecoder.dir/rule: cmake_check_build_system
+CMakeFiles/aiswatcher.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/aisdecoder.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/aiswatcher.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles 0
-.PHONY : CMakeFiles/aisdecoder.dir/rule
+.PHONY : CMakeFiles/aiswatcher.dir/rule
 
 # Convenience name for target.
-aisdecoder: CMakeFiles/aisdecoder.dir/rule
-.PHONY : aisdecoder
+aiswatcher: CMakeFiles/aiswatcher.dir/rule
+.PHONY : aiswatcher
 
 # clean rule for target.
-CMakeFiles/aisdecoder.dir/clean:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/clean
-.PHONY : CMakeFiles/aisdecoder.dir/clean
+CMakeFiles/aiswatcher.dir/clean:
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/clean
+.PHONY : CMakeFiles/aiswatcher.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/aisdecoder.dir/clean
+clean: CMakeFiles/aiswatcher.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/aisdecoder_dynamic_lib.dir
+# Target rules for target CMakeFiles/aiswatcher_dynamic_lib.dir
 
 # All Build rule for target.
-CMakeFiles/aisdecoder_dynamic_lib.dir/all:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/depend
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/build
+CMakeFiles/aiswatcher_dynamic_lib.dir/all:
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/depend
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles  3 4 5 6 7
-	@echo "Built target aisdecoder_dynamic_lib"
-.PHONY : CMakeFiles/aisdecoder_dynamic_lib.dir/all
+	@echo "Built target aiswatcher_dynamic_lib"
+.PHONY : CMakeFiles/aiswatcher_dynamic_lib.dir/all
 
 # Include target in all.
-all: CMakeFiles/aisdecoder_dynamic_lib.dir/all
+all: CMakeFiles/aiswatcher_dynamic_lib.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/aisdecoder_dynamic_lib.dir/rule: cmake_check_build_system
+CMakeFiles/aiswatcher_dynamic_lib.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/aisdecoder_dynamic_lib.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/aiswatcher_dynamic_lib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles 0
-.PHONY : CMakeFiles/aisdecoder_dynamic_lib.dir/rule
+.PHONY : CMakeFiles/aiswatcher_dynamic_lib.dir/rule
 
 # Convenience name for target.
-aisdecoder_dynamic_lib: CMakeFiles/aisdecoder_dynamic_lib.dir/rule
-.PHONY : aisdecoder_dynamic_lib
+aiswatcher_dynamic_lib: CMakeFiles/aiswatcher_dynamic_lib.dir/rule
+.PHONY : aiswatcher_dynamic_lib
 
 # clean rule for target.
-CMakeFiles/aisdecoder_dynamic_lib.dir/clean:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/clean
-.PHONY : CMakeFiles/aisdecoder_dynamic_lib.dir/clean
+CMakeFiles/aiswatcher_dynamic_lib.dir/clean:
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/clean
+.PHONY : CMakeFiles/aiswatcher_dynamic_lib.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/aisdecoder_dynamic_lib.dir/clean
+clean: CMakeFiles/aiswatcher_dynamic_lib.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/aisdecoder_static_lib.dir
+# Target rules for target CMakeFiles/aiswatcher_static_lib.dir
 
 # All Build rule for target.
-CMakeFiles/aisdecoder_static_lib.dir/all:
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/depend
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/build
+CMakeFiles/aiswatcher_static_lib.dir/all:
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/depend
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles  8 9 10 11 12
-	@echo "Built target aisdecoder_static_lib"
-.PHONY : CMakeFiles/aisdecoder_static_lib.dir/all
+	@echo "Built target aiswatcher_static_lib"
+.PHONY : CMakeFiles/aiswatcher_static_lib.dir/all
 
 # Include target in all.
-all: CMakeFiles/aisdecoder_static_lib.dir/all
+all: CMakeFiles/aiswatcher_static_lib.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/aisdecoder_static_lib.dir/rule: cmake_check_build_system
+CMakeFiles/aiswatcher_static_lib.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles 5
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/aisdecoder_static_lib.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/aiswatcher_static_lib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/steveb/Development/workspace/aisdecoder-1.0.0/build/CMakeFiles 0
-.PHONY : CMakeFiles/aisdecoder_static_lib.dir/rule
+.PHONY : CMakeFiles/aiswatcher_static_lib.dir/rule
 
 # Convenience name for target.
-aisdecoder_static_lib: CMakeFiles/aisdecoder_static_lib.dir/rule
-.PHONY : aisdecoder_static_lib
+aiswatcher_static_lib: CMakeFiles/aiswatcher_static_lib.dir/rule
+.PHONY : aiswatcher_static_lib
 
 # clean rule for target.
-CMakeFiles/aisdecoder_static_lib.dir/clean:
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/clean
-.PHONY : CMakeFiles/aisdecoder_static_lib.dir/clean
+CMakeFiles/aiswatcher_static_lib.dir/clean:
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/clean
+.PHONY : CMakeFiles/aiswatcher_static_lib.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/aisdecoder_static_lib.dir/clean
+clean: CMakeFiles/aiswatcher_static_lib.dir/clean
 .PHONY : clean
 
 #=============================================================================

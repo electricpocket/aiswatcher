@@ -103,51 +103,51 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named aisdecoder
+# Target rules for targets named aiswatcher
 
 # Build rule for target.
-aisdecoder: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aisdecoder
-.PHONY : aisdecoder
+aiswatcher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 aiswatcher
+.PHONY : aiswatcher
 
 # fast build rule for target.
-aisdecoder/fast:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/build
-.PHONY : aisdecoder/fast
+aiswatcher/fast:
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/build
+.PHONY : aiswatcher/fast
 
 #=============================================================================
-# Target rules for targets named aisdecoder_dynamic_lib
+# Target rules for targets named aiswatcher_dynamic_lib
 
 # Build rule for target.
-aisdecoder_dynamic_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aisdecoder_dynamic_lib
-.PHONY : aisdecoder_dynamic_lib
+aiswatcher_dynamic_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 aiswatcher_dynamic_lib
+.PHONY : aiswatcher_dynamic_lib
 
 # fast build rule for target.
-aisdecoder_dynamic_lib/fast:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/build
-.PHONY : aisdecoder_dynamic_lib/fast
+aiswatcher_dynamic_lib/fast:
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/build
+.PHONY : aiswatcher_dynamic_lib/fast
 
 #=============================================================================
-# Target rules for targets named aisdecoder_static_lib
+# Target rules for targets named aiswatcher_static_lib
 
 # Build rule for target.
-aisdecoder_static_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 aisdecoder_static_lib
-.PHONY : aisdecoder_static_lib
+aiswatcher_static_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 aiswatcher_static_lib
+.PHONY : aiswatcher_static_lib
 
 # fast build rule for target.
-aisdecoder_static_lib/fast:
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/build
-.PHONY : aisdecoder_static_lib/fast
+aiswatcher_static_lib/fast:
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/build
+.PHONY : aiswatcher_static_lib/fast
 
 src/lib/filter.o: src/lib/filter.c.o
 .PHONY : src/lib/filter.o
 
 # target to build an object file
 src/lib/filter.c.o:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/filter.c.o
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/filter.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/filter.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/filter.c.o
 .PHONY : src/lib/filter.c.o
 
 src/lib/filter.i: src/lib/filter.c.i
@@ -155,8 +155,8 @@ src/lib/filter.i: src/lib/filter.c.i
 
 # target to preprocess a source file
 src/lib/filter.c.i:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/filter.c.i
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/filter.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/filter.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/filter.c.i
 .PHONY : src/lib/filter.c.i
 
 src/lib/filter.s: src/lib/filter.c.s
@@ -164,8 +164,8 @@ src/lib/filter.s: src/lib/filter.c.s
 
 # target to generate assembly for a file
 src/lib/filter.c.s:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/filter.c.s
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/filter.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/filter.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/filter.c.s
 .PHONY : src/lib/filter.c.s
 
 src/lib/hmalloc.o: src/lib/hmalloc.c.o
@@ -173,8 +173,8 @@ src/lib/hmalloc.o: src/lib/hmalloc.c.o
 
 # target to build an object file
 src/lib/hmalloc.c.o:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/hmalloc.c.o
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/hmalloc.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/hmalloc.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/hmalloc.c.o
 .PHONY : src/lib/hmalloc.c.o
 
 src/lib/hmalloc.i: src/lib/hmalloc.c.i
@@ -182,8 +182,8 @@ src/lib/hmalloc.i: src/lib/hmalloc.c.i
 
 # target to preprocess a source file
 src/lib/hmalloc.c.i:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/hmalloc.c.i
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/hmalloc.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/hmalloc.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/hmalloc.c.i
 .PHONY : src/lib/hmalloc.c.i
 
 src/lib/hmalloc.s: src/lib/hmalloc.c.s
@@ -191,8 +191,8 @@ src/lib/hmalloc.s: src/lib/hmalloc.c.s
 
 # target to generate assembly for a file
 src/lib/hmalloc.c.s:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/hmalloc.c.s
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/hmalloc.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/hmalloc.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/hmalloc.c.s
 .PHONY : src/lib/hmalloc.c.s
 
 src/lib/protodec.o: src/lib/protodec.c.o
@@ -200,8 +200,8 @@ src/lib/protodec.o: src/lib/protodec.c.o
 
 # target to build an object file
 src/lib/protodec.c.o:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/protodec.c.o
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/protodec.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/protodec.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/protodec.c.o
 .PHONY : src/lib/protodec.c.o
 
 src/lib/protodec.i: src/lib/protodec.c.i
@@ -209,8 +209,8 @@ src/lib/protodec.i: src/lib/protodec.c.i
 
 # target to preprocess a source file
 src/lib/protodec.c.i:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/protodec.c.i
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/protodec.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/protodec.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/protodec.c.i
 .PHONY : src/lib/protodec.c.i
 
 src/lib/protodec.s: src/lib/protodec.c.s
@@ -218,8 +218,8 @@ src/lib/protodec.s: src/lib/protodec.c.s
 
 # target to generate assembly for a file
 src/lib/protodec.c.s:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/protodec.c.s
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/protodec.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/protodec.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/protodec.c.s
 .PHONY : src/lib/protodec.c.s
 
 src/lib/receiver.o: src/lib/receiver.c.o
@@ -227,8 +227,8 @@ src/lib/receiver.o: src/lib/receiver.c.o
 
 # target to build an object file
 src/lib/receiver.c.o:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/receiver.c.o
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/receiver.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/receiver.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/receiver.c.o
 .PHONY : src/lib/receiver.c.o
 
 src/lib/receiver.i: src/lib/receiver.c.i
@@ -236,8 +236,8 @@ src/lib/receiver.i: src/lib/receiver.c.i
 
 # target to preprocess a source file
 src/lib/receiver.c.i:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/receiver.c.i
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/receiver.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/receiver.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/receiver.c.i
 .PHONY : src/lib/receiver.c.i
 
 src/lib/receiver.s: src/lib/receiver.c.s
@@ -245,8 +245,8 @@ src/lib/receiver.s: src/lib/receiver.c.s
 
 # target to generate assembly for a file
 src/lib/receiver.c.s:
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/lib/receiver.c.s
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/lib/receiver.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/lib/receiver.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/lib/receiver.c.s
 .PHONY : src/lib/receiver.c.s
 
 src/main.o: src/main.c.o
@@ -254,7 +254,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -262,7 +262,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -270,7 +270,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/sounddecoder.o: src/sounddecoder.c.o
@@ -278,9 +278,9 @@ src/sounddecoder.o: src/sounddecoder.c.o
 
 # target to build an object file
 src/sounddecoder.c.o:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/src/sounddecoder.c.o
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/sounddecoder.c.o
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/sounddecoder.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/src/sounddecoder.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/sounddecoder.c.o
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/sounddecoder.c.o
 .PHONY : src/sounddecoder.c.o
 
 src/sounddecoder.i: src/sounddecoder.c.i
@@ -288,9 +288,9 @@ src/sounddecoder.i: src/sounddecoder.c.i
 
 # target to preprocess a source file
 src/sounddecoder.c.i:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/src/sounddecoder.c.i
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/sounddecoder.c.i
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/sounddecoder.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/src/sounddecoder.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/sounddecoder.c.i
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/sounddecoder.c.i
 .PHONY : src/sounddecoder.c.i
 
 src/sounddecoder.s: src/sounddecoder.c.s
@@ -298,9 +298,9 @@ src/sounddecoder.s: src/sounddecoder.c.s
 
 # target to generate assembly for a file
 src/sounddecoder.c.s:
-	$(MAKE) -f CMakeFiles/aisdecoder.dir/build.make CMakeFiles/aisdecoder.dir/src/sounddecoder.c.s
-	$(MAKE) -f CMakeFiles/aisdecoder_dynamic_lib.dir/build.make CMakeFiles/aisdecoder_dynamic_lib.dir/src/sounddecoder.c.s
-	$(MAKE) -f CMakeFiles/aisdecoder_static_lib.dir/build.make CMakeFiles/aisdecoder_static_lib.dir/src/sounddecoder.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher.dir/build.make CMakeFiles/aiswatcher.dir/src/sounddecoder.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_dynamic_lib.dir/build.make CMakeFiles/aiswatcher_dynamic_lib.dir/src/sounddecoder.c.s
+	$(MAKE) -f CMakeFiles/aiswatcher_static_lib.dir/build.make CMakeFiles/aiswatcher_static_lib.dir/src/sounddecoder.c.s
 .PHONY : src/sounddecoder.c.s
 
 # Help Target
@@ -309,9 +309,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... aisdecoder"
-	@echo "... aisdecoder_dynamic_lib"
-	@echo "... aisdecoder_static_lib"
+	@echo "... aiswatcher"
+	@echo "... aiswatcher_dynamic_lib"
+	@echo "... aiswatcher_static_lib"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... src/lib/filter.o"

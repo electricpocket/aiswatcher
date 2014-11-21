@@ -128,7 +128,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=aisdecoder
+CMAKE_PROJECT_NAME:STATIC=aiswatcher
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -193,6 +193,18 @@ aisdecoder_dynamic_lib_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
 aisdecoder_static_lib_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+aiswatcher_BINARY_DIR:STATIC=/Users/steveb/Development/workspace/aisdecoder-1.0.0/build
+
+//Value Computed by CMake
+aiswatcher_SOURCE_DIR:STATIC=/Users/steveb/Development/workspace/aisdecoder-1.0.0
+
+//Dependencies for target
+aiswatcher_dynamic_lib_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+aiswatcher_static_lib_LIB_DEPENDS:STATIC=
 
 
 ########################

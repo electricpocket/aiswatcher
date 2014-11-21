@@ -47,7 +47,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/aisdecoder.dir/DependInfo.cmake"
-  "CMakeFiles/aisdecoder_dynamic_lib.dir/DependInfo.cmake"
-  "CMakeFiles/aisdecoder_static_lib.dir/DependInfo.cmake"
+  "CMakeFiles/aiswatcher.dir/DependInfo.cmake"
+  "CMakeFiles/aiswatcher_dynamic_lib.dir/DependInfo.cmake"
+  "CMakeFiles/aiswatcher_static_lib.dir/DependInfo.cmake"
   )
