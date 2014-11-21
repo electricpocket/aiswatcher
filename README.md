@@ -13,6 +13,11 @@ You can dump the strings to the console and also forward them to the BoatBeaconA
 This code is based on a rework of aisdecoder from aishub.net (http://forum.aishub.net/ais-decoder/ais-decoder-beta-release/) 
  to include rtl-sdr (http://sdr.osmocom.org/trac/wiki/rtl-sdr) to run as one command and add displaying ships on a live map web view.
 
+Pre-requisites
+==============
+
+Clone and build the rtl-sdr library. see http://sdr.osmocom.org/trac/wiki/rtl-sdr
+
 Build instructions
 ==================
 
