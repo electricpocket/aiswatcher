@@ -38,31 +38,19 @@
 // Program global state
 struct {                             // Internal state
 
-
+//rtl_fm -f 161975000 -g 40 -p 95 -s 48k -r 48k /tmp/aisdata
     // RTLSDR
     int           dev_index;
     int           gain;
     int           enable_agc;
-    rtlsdr_dev_t *dev;
     int           freq;
     int           ppm_error;
 
     // Configuration
     char *filename;                  // Input form file, --ifile option
 
-    int   debug;                     // Debugging mode
-
-    // User details
-    double fUserLat;                // Users receiver/antenna lat/lon needed for initial surface location
-    double fUserLon;                // Users receiver/antenna lat/lon needed for initial surface location
-    int    bUserFlags;              // Flags relating to the user details
-
-
-
-
 } Modes;
 
-extern FILE *fp;
 
 void run_rtl_fm( );
 

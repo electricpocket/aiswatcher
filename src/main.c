@@ -101,10 +101,7 @@ void nmea_sentence_received(const char *sentence,
 	}
 }
 
-#define CMD_PARAMS_COMMON "h:p:a:lHf:dc:"
-
-#define CMD_PARAMS CMD_PARAMS_COMMON
-
+#define CMD_PARAMS "h:p:t:lHf:dc:D:G:C:F:P:"
 
 
 int main(int argc, char *argv[]) {
@@ -113,6 +110,13 @@ int main(int argc, char *argv[]) {
 	const char *params=CMD_PARAMS;
 	int file=0;
 	int hfnd=0, pfnd=0, afnd=0;
+
+	Modes.dev_index=0;
+	Modes.gain=40;
+	Modes.enable_agc=0;
+	Modes.freq=161975000;
+	Modes.ppm_error=0;
+
 
 	int opt;
 	//default to read from fifo
@@ -125,6 +129,7 @@ int main(int argc, char *argv[]) {
 		switch (opt) {
 		//rtl-sdr options
 		case 'D':
+			Modes.dev_index = atoi(optarg);
 			break;
 		case 'G':
 			Modes.gain = (int) (atof(optarg)*10); // Gain is in tens of DBs
@@ -235,7 +240,6 @@ int main(int argc, char *argv[]) {
 
 		OK=initSoundDecoder(channels, driver, file_name);
 
-
 		int stop=0;
 		fprintf(stderr, "running sound decoder %d  \n",OK);
 		if (OK) {
@@ -252,31 +256,38 @@ int main(int argc, char *argv[]) {
 
 void run_rtl_fm( )
 {
-
-	char *my_args[8];
+	//rtl_fm -f 161975000 -g 40 -p 95 -s 48k -r 48k /tmp/aisdata
+	char *my_args[9];
 
 	my_args[0] = "rtl_fm";
 	/*
 	         my_args[1] = "-h";
 	         my_args[2] = NULL;
 	 */
-	my_args[1] = "-f 161975000";
-	my_args[2] = "-g 40";
-	my_args[3] = "-p 95";
+	my_args[1] = malloc(strlen("-f 1161975000"));
+	my_args[2] = malloc(20);
+	my_args[3] = malloc(20);
+	my_args[6] = malloc(10);
+
+	sprintf(my_args[1],"-f %d",Modes.freq);// "-f 161975000";
+	sprintf(my_args[2],"-g %d",Modes.gain);//"-g 40";
+	sprintf(my_args[3],"-p %d",Modes.ppm_error);//"-p 95";
 	my_args[4] = "-s 48k";
 	my_args[5] = "-r 48k";
-	my_args[6] = Modes.filename;
+	sprintf(my_args[6],"-d %d",Modes.dev_index);
+	my_args[7] = Modes.filename;
 
-	my_args[7] = NULL;
+	my_args[8] = NULL;
 
 
-	fprintf(stderr, "Spawning rtl_fm\n");
+	//fprintf(stderr, "Spawning rtl_fm\n");
 
 	int succ = execv( "/usr/local/bin/rtl_fm", my_args);
 	if (succ) fprintf(stderr, "Spawning rtl_fm failed %d\n",succ);
-
-
-
+	free(my_args[1]);
+	free(my_args[2]);
+	free(my_args[3]);
+	free(my_args[6]);
 }
 
 int initSocket(const char *host, const char *portname) {
