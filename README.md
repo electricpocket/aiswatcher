@@ -32,7 +32,7 @@ You can then view the live ships on this web page:-
 
 http://boatbeaconapp.com/station/7004
 
-Please email us at "support at pocketmariner.com" if you would like your own web page to display
+Please email us at "support at pocketmariner.com" if you would like your own port and dedicated web page to view
 data from your setup.
 
 AisWatcher defaults to using the lower AIS radio frequency - 161.975MHz. Pass "-F 162025000" to use the alternative AIS band.
