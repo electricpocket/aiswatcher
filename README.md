@@ -19,13 +19,9 @@ Build instructions
 git clone https://github.com/electricpocket/aiswatcher.git
 
 cd aiswatcher
-
 mkdir build
-
 cd build
-
 cmake ../ -DCMAKE_BUILD_TYPE=RELEASE
-
 make
 
 To run:-
