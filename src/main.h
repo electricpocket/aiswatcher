@@ -4,7 +4,7 @@
 
 // ============================= Include files ==========================
 
-#ifndef _WIN32
+
     #include "stdio.h"
     #include <string.h>
     #include <stdlib.h>
@@ -21,11 +21,6 @@
     #include <sys/stat.h>
     #include <sys/ioctl.h>
     #include "rtl-sdr.h"
-#else
-    #include "winstubs.h" //Put everything Windows specific in here
-    #include "rtl-sdr.h"
-    #include "anet.h"
-#endif
 
 #define MODES_DEFAULT_PPM          52
 #define MODES_DEFAULT_RATE         48000
@@ -51,11 +46,6 @@ struct {                             // Internal state
     rtlsdr_dev_t *dev;
     int           freq;
     int           ppm_error;
-
-
-#ifdef _WIN32
-    WSADATA        wsaData;          // Windows socket initialisation
-#endif
 
     // Configuration
     char *filename;                  // Input form file, --ifile option
