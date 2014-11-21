@@ -236,12 +236,10 @@ int main(int argc, char *argv[]) {
 	else if (pID)                // child
 	{
 
-		fprintf(stderr, "Starting sound decoder first\n");
-
 		OK=initSoundDecoder(channels, driver, file_name);
 
 		int stop=0;
-		fprintf(stderr, "running sound decoder %d  \n",OK);
+
 		if (OK) {
 			runSoundDecoder(&stop);
 		} else {
@@ -325,6 +323,11 @@ int initSocket(const char *host, const char *portname) {
 	{
 		struct hostent *server;
 		server = gethostbyname(host);
+		if (server == NULL)
+		{
+		  fprintf(stderr,"ERROR, no such host %s",host);
+		  exit(0);
+		}
 		bzero((char *) &serv_addr, sizeof(serv_addr));
 		serv_addr.sin_family = AF_INET;
 		bcopy((char *)server->h_addr,
