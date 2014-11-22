@@ -11,7 +11,7 @@ AisWatcher decodes the radio data and converts it to AIS ascii data strings.
 You can dump the strings to the console and also forward them to the BoatBeaconApp.com server to display on a live map view.
 
 This code is based on a rework of aisdecoder from aishub.net (http://forum.aishub.net/ais-decoder/ais-decoder-beta-release/) 
- to include rtl-sdr (http://sdr.osmocom.org/trac/wiki/rtl-sdr) to run as one command and add displaying ships on a live map web view.
+ to include rtl-sdr (http://sdr.osmocom.org/trac/wiki/rtl-sdr) to run as a single command and diplay ships on a live map web view.
 
 Pre-requisites
 ==============
