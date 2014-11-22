@@ -318,31 +318,6 @@ void run_rtl_fm( )
 
 	my_args[8] = NULL;
 
-
-	/*
-	fprintf(stderr, " opening %s\n",Modes.filename);
-	FILE* ofp = fopen(Modes.filename, "wb");
-	if (ofp <=0 ) fprintf(stderr, " failed to open pipe");
-
-	char* msg1 = "!AIVDM,1,1,,A,H3P<iS1<58U@622222222222220,0*2A\r\n";
-	char* msg2 = "!AIVDM,1,1,,A,H3P<iS4T1=30000j35:pPP0P4110,0*16\r\n";
-	int written=1;
-	//fprintf(stderr, "Spawning rtl_fm\n");
-    while (ofp > 0 && written > 0)
-    { //send test data to /tmp/aisdata
-    	fprintf(stderr, " msg 1 %s\n",msg1);
-
-    	written= fwrite(msg1,1,strlen(msg1),ofp);
-    	//fprintf(stderr, " msg 1 written %d\n",written);
-    	sleep(2);
-    	fprintf(stderr, " msg 2 %s\n",msg2);
-    	written= fwrite(msg2,1,strlen(msg1),ofp);
-    	sleep(10);
-    	//!AIVDM,1,1,,A,H3P<iS1<58U@622222222222220,0*2A
-    	//!AIVDM,1,1,,A,H3P<iS4T1=30000j35:pPP0P4110,0*16
-    }
-    fclose(ofp);
-	 */
 	int succ = execvp( "rtl_fm", my_args);
 	if (succ) fprintf(stderr, "Spawning rtl_fm failed %d\n",succ);
 	free(my_args[1]);
