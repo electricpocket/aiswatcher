@@ -16,7 +16,7 @@
 				</extensions>
 			</storageModule>
 			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-				<configuration buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.macosx.base.520492293" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+				<configuration artifactName="aisdecoder-1.0.0" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.macosx.base.520492293" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
 					<folderInfo id="cdt.managedbuild.toolchain.gnu.macosx.base.520492293.1095091787" name="/" resourcePath="">
 						<toolChain id="cdt.managedbuild.toolchain.gnu.macosx.base.486042284" name="cdt.managedbuild.toolchain.gnu.macosx.base" superClass="cdt.managedbuild.toolchain.gnu.macosx.base">
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.MachO64" id="cdt.managedbuild.target.gnu.platform.macosx.base.1504781776" name="Debug Platform" osList="macosx" superClass="cdt.managedbuild.target.gnu.platform.macosx.base"/>
@@ -48,9 +48,6 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="aisdecoder-1.0.0.null.1091154568" name="aisdecoder-1.0.0"/>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 		<buildTargets>
@@ -68,5 +65,14 @@
 		<configuration configurationName="Default">
 			<resource resourceType="PROJECT" workspacePath="/aisdecoder-1.0.0"/>
 		</configuration>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.macosx.base.520492293;cdt.managedbuild.toolchain.gnu.macosx.base.520492293.1095091787;cdt.managedbuild.tool.gnu.cpp.compiler.macosx.base.1516820155;cdt.managedbuild.tool.gnu.cpp.compiler.input.1023216201">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.macosx.base.520492293;cdt.managedbuild.toolchain.gnu.macosx.base.520492293.1095091787;cdt.managedbuild.tool.gnu.c.compiler.macosx.base.1918165274;cdt.managedbuild.tool.gnu.c.compiler.input.1555346155">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile"/>
+		</scannerConfigBuildInfo>
 	</storageModule>
 </cproject>

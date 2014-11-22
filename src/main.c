@@ -61,13 +61,13 @@ static int protocol=0; //1 = TCP, 0 for UDP
 static int initSocket(const char *host, const char *portname);
 static int show_levels=0;
 static int debug_nmea=0;
-
+char *host=NULL,*port=NULL;
 
 void sound_level_changed(float level, int channel, unsigned char high) {
 	if (high != 0)
-		fprintf(stderr, "Level on ch %d too high: %.0f %%\n", channel, level);
+		fprintf(stderr, "RX Level on ch %d too high: %.0f %%\n", channel, level);
 	else
-		fprintf(stderr, "Level on ch %d: %.0f %%\n", channel, level);
+		fprintf(stderr, "RX Level on ch %d: %.0f %%\n", channel, level);
 }
 
 void nmea_sentence_received(const char *sentence,
@@ -75,16 +75,34 @@ void nmea_sentence_received(const char *sentence,
 		unsigned char sentences,
 		unsigned char sentencenum) {
 	if (sentences == 1) {
+
+		//if (debug_nmea) fprintf(stderr, "length %d", strlen(sentence));
+		if (debug_nmea) fprintf(stderr, "%s", sentence);
+
 		if (protocol ==0)
 		{
 			if (sendto(sock, sentence, length, 0, addr->ai_addr, addr->ai_addrlen) == -1) abort();
 		}
 		else if (protocol==1)
 		{
-			if (write(sock, sentence, length) < 0 ) abort();
+			//fprintf(stderr, "write to remote socket address 1\n");
+			if (write(sock, sentence, strlen(sentence)) < 0 )
+			{
+				//it might have timed out - close it and re-open it.
+
+				//fprintf(stderr, "Failed to write to remote socket address!\n");
+
+				if (!openTcpSocket(host, port) )
+				{
+					//fprintf(stderr, "Failed to to re-open remote socket address!\n");
+					 abort();
+				}
+
+			}
+
 		}
 
-		if (debug_nmea) fprintf(stderr, "%s", sentence);
+
 	} else {
 		if (buffer_count + length < MAX_BUFFER_LENGTH) {
 			memcpy(&buffer[buffer_count], sentence, length);
@@ -94,8 +112,30 @@ void nmea_sentence_received(const char *sentence,
 		}
 
 		if (sentences == sentencenum && buffer_count > 0) {
-			if (sendto(sock, buffer, buffer_count, 0, addr->ai_addr, addr->ai_addrlen) == -1) abort();
 			if (debug_nmea) fprintf(stderr, "%s", buffer);
+			if (protocol ==0)
+			{
+				if (sendto(sock, buffer, buffer_count, 0, addr->ai_addr, addr->ai_addrlen) == -1) abort();
+			}
+			else if (protocol==1)
+			{
+				//fprintf(stderr, "write to remote socket address 2\n");
+				if (write(sock, sentence, strlen(sentence)) < 0 )
+				{
+					//it might have timed out - close it and re-open it.
+
+					//fprintf(stderr, "Failed to write to remote socket address!\n");
+
+					if (!openTcpSocket(host, port) )
+					{
+						//fprintf(stderr, "Failed to to re-open remote socket address!\n");
+						abort();
+					}
+
+				}
+
+			}
+
 			buffer_count=0;
 		};
 	}
@@ -106,7 +146,7 @@ void nmea_sentence_received(const char *sentence,
 
 int main(int argc, char *argv[]) {
 	Sound_Channels channels = SOUND_CHANNELS_MONO;
-	char *host=NULL,*port=NULL, *file_name=NULL;
+	char *file_name=NULL;
 	const char *params=CMD_PARAMS;
 
 	int hfnd=0, pfnd=0;
@@ -118,6 +158,9 @@ int main(int argc, char *argv[]) {
 	Modes.ppm_error=0;
 
 	int opt;
+	// We expect write failures to occur but we want to handle them where
+	// the error occurs rather than in a SIGPIPE handler.
+	signal(SIGPIPE, SIG_IGN);
 
 	protocol=0;
 	channels = SOUND_CHANNELS_MONO;
@@ -253,6 +296,7 @@ void run_rtl_fm( )
 {
 	//rtl_fm -f 161975000 -g 40 -p 95 -s 48k -r 48k /tmp/aisdata
 	char *my_args[9];
+	fprintf(stderr, "forked\n");
 
 	my_args[0] = "rtl_fm";
 	/*
@@ -275,21 +319,44 @@ void run_rtl_fm( )
 	my_args[8] = NULL;
 
 
-	//fprintf(stderr, "Spawning rtl_fm\n");
+	/*
+	fprintf(stderr, " opening %s\n",Modes.filename);
+	FILE* ofp = fopen(Modes.filename, "wb");
+	if (ofp <=0 ) fprintf(stderr, " failed to open pipe");
 
+	char* msg1 = "!AIVDM,1,1,,A,H3P<iS1<58U@622222222222220,0*2A\r\n";
+	char* msg2 = "!AIVDM,1,1,,A,H3P<iS4T1=30000j35:pPP0P4110,0*16\r\n";
+	int written=1;
+	//fprintf(stderr, "Spawning rtl_fm\n");
+    while (ofp > 0 && written > 0)
+    { //send test data to /tmp/aisdata
+    	fprintf(stderr, " msg 1 %s\n",msg1);
+
+    	written= fwrite(msg1,1,strlen(msg1),ofp);
+    	//fprintf(stderr, " msg 1 written %d\n",written);
+    	sleep(2);
+    	fprintf(stderr, " msg 2 %s\n",msg2);
+    	written= fwrite(msg2,1,strlen(msg1),ofp);
+    	sleep(10);
+    	//!AIVDM,1,1,,A,H3P<iS1<58U@622222222222220,0*2A
+    	//!AIVDM,1,1,,A,H3P<iS4T1=30000j35:pPP0P4110,0*16
+    }
+    fclose(ofp);
+	 */
 	int succ = execvp( "rtl_fm", my_args);
 	if (succ) fprintf(stderr, "Spawning rtl_fm failed %d\n",succ);
 	free(my_args[1]);
 	free(my_args[2]);
 	free(my_args[3]);
 	free(my_args[6]);
+
 }
 
 int initSocket(const char *host, const char *portname) {
 	struct addrinfo hints;
 	memset(&hints, 0, sizeof(hints));
 
-
+	 char* testMessage = "aisdecoder connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
 	hints.ai_family=AF_UNSPEC;
 	hints.ai_socktype=SOCK_DGRAM;
 	hints.ai_protocol=IPPROTO_UDP;
@@ -322,8 +389,8 @@ int initSocket(const char *host, const char *portname) {
 		server = gethostbyname(host);
 		if (server == NULL)
 		{
-		  fprintf(stderr,"ERROR, no such host %s",host);
-		  exit(0);
+			fprintf(stderr,"ERROR, no such host %s",host);
+			exit(0);
 		}
 		bzero((char *) &serv_addr, sizeof(serv_addr));
 		serv_addr.sin_family = AF_INET;
@@ -338,6 +405,82 @@ int initSocket(const char *host, const char *portname) {
 			fprintf(stderr, "Failed to connect to remote socket address!\n");
 			return 0;
 		}
+
+		if (write(sock, testMessage, strlen(testMessage)) < 0 )
+		{
+			fprintf(stderr, "Failed to write to remote socket address!\n");
+			abort();
+		}
+	}
+	return 1;
+}
+
+int openTcpSocket(const char *host, const char *portname) {
+
+    char* testMessage = "aisdecoder re-connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
+	struct addrinfo hints;
+
+	if (protocol!=1) return -1;
+
+	memset(&hints, 0, sizeof(hints));
+
+
+	hints.ai_family=AF_UNSPEC;
+	hints.ai_socktype=SOCK_DGRAM;
+	hints.ai_protocol=IPPROTO_UDP;
+	if (protocol==1)
+	{
+		hints.ai_family=AF_INET;
+		hints.ai_socktype=SOCK_STREAM;
+		hints.ai_protocol=0; //let the server decide
+	}
+
+
+	hints.ai_flags=AI_ADDRCONFIG;
+
+	int err=getaddrinfo(host, portname, &hints, &addr);
+	if (err!=0) {
+		fprintf(stderr, "Failed to resolve remote socket address!\n");
+
+		return -1;
+	}
+
+	sock=socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol);
+	if (sock==-1) {
+		fprintf(stderr, "%s",strerror(errno));
+
+		return -1;
+	}
+	if (protocol ==1 )
+	{
+		struct hostent *server;
+		server = gethostbyname(host);
+		if (server == NULL)
+		{
+			fprintf(stderr,"ERROR, no such host %s",host);
+			return -1;
+		}
+		bzero((char *) &serv_addr, sizeof(serv_addr));
+		serv_addr.sin_family = AF_INET;
+		bcopy((char *)server->h_addr,
+				(char *)&serv_addr.sin_addr.s_addr,
+				server->h_length);
+		int portno=atoi(portname);
+		serv_addr.sin_port = htons(portno);
+
+		if (connect(sock,(struct sockaddr*)&serv_addr,sizeof(serv_addr)) < 0)
+		{
+			fprintf(stderr, "Failed to connect to remote socket address!\n");
+			return -1;
+		}
+
+		if (write(sock, testMessage, strlen(testMessage)) < 0 )
+		{
+			fprintf(stderr, "Failed to write to remote socket address!\n");
+			return -1;
+		}
+
+
 	}
 	return 1;
 }

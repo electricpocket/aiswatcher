@@ -51,16 +51,18 @@ int initSoundDecoder( const Sound_Channels _channels, const Sound_Driver _driver
 	char soundFile[MAX_FILENAME_SIZE+1];
 	switch (driver) {
 	case DRIVER_FILE:
+		fprintf(stderr, "opening pipe\n");
 		strncpy(soundFile, file, MAX_FILENAME_SIZE);
 		soundFile[MAX_FILENAME_SIZE]=0;
-		fp = fopen(soundFile, "w+b");
+		fp = fopen(soundFile, "rb");
 		if (fp) {
-
+			fprintf(stderr, "opened pipe\n");
 			buffer_l = 1024;
 			int extra = buffer_l % 5;
 			buffer_l -= extra;
 			buffer = (short *) hmalloc(buffer_l * sizeof(short) * channels);
 		} else {
+			fprintf(stderr, "Can't open raw file for read\n");
 			strcpy(errorSoundDecoder, "Can't open raw file for read");
 			return 0;
 		}
@@ -84,6 +86,8 @@ void runSoundDecoder(int *stop) {
 		case DRIVER_FILE:
 
 			buffer_read = fread(buffer, channels * sizeof(short), buffer_l, fp);
+			//fprintf(stderr, "read %d",buffer_read);
+
 
 			if (buffer_read <= 0)
 			{

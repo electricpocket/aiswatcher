@@ -53,7 +53,7 @@ struct {                             // Internal state
 
 
 void run_rtl_fm( );
-
+int openTcpSocket(const char *host, const char *portname);
 void modesInitConfig();
 int verbose_device_search(char *s);
 void modesInitRTLSDR(void);
