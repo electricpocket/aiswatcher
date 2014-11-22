@@ -97,6 +97,10 @@ void nmea_sentence_received(const char *sentence,
 					//fprintf(stderr, "Failed to to re-open remote socket address!\n");
 					 abort();
 				}
+				else
+				{
+					write(sock, sentence, strlen(sentence));
+				}
 
 			}
 
@@ -130,6 +134,10 @@ void nmea_sentence_received(const char *sentence,
 					{
 						//fprintf(stderr, "Failed to to re-open remote socket address!\n");
 						abort();
+					}
+					else
+					{
+						write(sock, sentence, strlen(sentence));
 					}
 
 				}
