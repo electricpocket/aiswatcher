@@ -1,17 +1,15 @@
 aiswatcher
 ==========
-Displays live ship positions on a map from ships' AIS vhf radio broadcasts.
+Displays live ship positions on a google map from ships' AIS vhf radio broadcasts.
 
-AisWatcher builds and runs on most linux platfroms including BeagleBone, Raspberry Pi and Mac for use 
-with RTL2832U (RTL SDR usb sticks).
+AisWatcher builds and runs on most linux platfroms including BeagleBone, Raspberry Pi and Mac together with a RTL2832U (RTL SDR usb stick).
 
-see http://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/ for the radio dongles.
+See http://www.rtl-sdr.com/buy-rtl-sdr-dvb-t-dongles/ for the radio usb stick.
 
-AisWatcher decodes the radio data and converts it to AIS ascii data strings. 
-You can dump the strings to the console and also forward them to the BoatBeaconApp.com server to display on a live map view.
+AisWatcher decodes the radio data and converts it to AIS ascii data strings. You can dump the strings to the console and also forward them to the <a href="http://boatbeaconapp.com">BoatBeaconApp.com</a> server to display on a live map view and in the free <a href="http://boatwatchapp.com">Boat Watch apps</a>, available for iPhone, iPad, Mac and Android.
 
 This code is based on a rework of aisdecoder from aishub.net (http://forum.aishub.net/ais-decoder/ais-decoder-beta-release/) 
- to include rtl-sdr (http://sdr.osmocom.org/trac/wiki/rtl-sdr) to run as a single command and diplay ships on a live map web view.
+ to include rtl-sdr (http://sdr.osmocom.org/trac/wiki/rtl-sdr) to run as a single command and diplay ships live on a google map.
 
 Pre-requisites
 ==============
@@ -23,7 +21,7 @@ Make sure rtl_fm runs and it is in your path. (e.g. $PATH).
 Build instructions
 ==================
 
-git clone https://github.com/electricpocket/aiswatcher.git
+git clone https://github.com/pocketmariner/aiswatcher.git
 
 cd aiswatcher
 <p>mkdir build
