@@ -57,4 +57,5 @@ int openTcpSocket(const char *host, const char *portname);
 void modesInitConfig();
 int verbose_device_search(char *s);
 void modesInitRTLSDR(void);
+int openSerialOut();
 #endif

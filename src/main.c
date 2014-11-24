@@ -14,7 +14,8 @@
  */
 #include "main.h"
 #include <unistd.h>
-
+#include <termios.h>
+#include <fcntl.h>
 #include <netdb.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -43,6 +44,7 @@
 		"-f\tFull path to 48kHz raw audio file (default /tmp/aisdata)\n"\
 		"-l\tLog sound levels to console (stderr)\n"\
 		"-d\tLog NMEA sentences to console (stderr)\n"\
+		"-n\tOutput to serial/NMEA device name e.g. /dev/ttyO0 (BeagleBone Black J1)\n"\
 		"-D <index>   Select RTL device (default: 0)\n"\
 		"-G db  Set gain (default: max gain. Use -10 for auto-gain)\n"\
 		"-C  Enable the Automatic Gain Control (default: off)\n"\
@@ -61,7 +63,11 @@ static int protocol=0; //1 = TCP, 0 for UDP
 static int initSocket(const char *host, const char *portname);
 static int show_levels=0;
 static int debug_nmea=0;
+static int serial_nmea=0;
+static char* serial_device=NULL;
+static int ttyfd=-1; //file descriptor for console outpu
 static int share_nmea_via_ip=0;
+
 char *host=NULL,*port=NULL;
 
 void sound_level_changed(float level, int channel, unsigned char high) {
@@ -79,6 +85,7 @@ void nmea_sentence_received(const char *sentence,
 
 		//if (debug_nmea) fprintf(stderr, "length %d", strlen(sentence));
 		if (debug_nmea) fprintf(stderr, "%s", sentence);
+		if (serial_nmea && ttyfd > 0) write(ttyfd, sentence,strlen(sentence));
 
 		if (share_nmea_via_ip && protocol ==0)
 		{
@@ -118,6 +125,8 @@ void nmea_sentence_received(const char *sentence,
 
 		if (sentences == sentencenum && buffer_count > 0) {
 			if (debug_nmea) fprintf(stderr, "%s", buffer);
+			if (serial_nmea && ttyfd > 0) write(ttyfd, buffer,strlen(buffer));
+
 			if (share_nmea_via_ip && protocol ==0)
 			{
 				if (sendto(sock, buffer, buffer_count, 0, addr->ai_addr, addr->ai_addrlen) == -1) abort();
@@ -150,7 +159,7 @@ void nmea_sentence_received(const char *sentence,
 	}
 }
 
-#define CMD_PARAMS "h:p:t:lHf:dc:D:G:C:F:P:"
+#define CMD_PARAMS "h:p:t:ln:dHf:c:D:G:C:F:P:"
 
 
 int main(int argc, char *argv[]) {
@@ -212,6 +221,10 @@ int main(int argc, char *argv[]) {
 			break;
 		case 'd':
 			debug_nmea = 1;
+			break;
+		case 'n':
+			serial_nmea = 1;
+			serial_device = optarg;
 			break;
 		case 'H':
 			fprintf(stderr, HELP_MSG);
@@ -316,7 +329,7 @@ int main(int argc, char *argv[]) {
 	}
 	else if (pID)                // child
 	{
-
+		if (serial_nmea) openSerialOut();
 		OK=initSoundDecoder(channels, driver, file_name);
 
 		int stop=0;
@@ -416,6 +429,47 @@ int openTcpSocket(const char *host, const char *portname) {
 	if (protocol!=1) return -1;
     if (! initSocket(host, portname)) return -1;
     return 1;
+
+}
+
+int openSerialOut()
+{
+	//On BeagleBone Black /dev/ttyO0 is enabled by default and attached to the console
+	//you can write to it
+	//echo Hello > /dev/ttyO0
+	//You can set its speed to the NMEA 38400
+	//stty -F /dev/ttyO0 38400  - set console to 38400
+	//stty -a -F /dev/ttyO0
+	//You can connect and listen to the console on your mac using
+	//screen /dev/tty.usbserial 38400
+	//exit using ctrl-a d
+	 char* testMessage = "aisdecoder nmea connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
+	 struct termios oldtio, newtio;       //place for old and new port settings for serial port
+	ttyfd = open(serial_device, O_RDWR);
+	if (ttyfd < 0 )
+	{
+		fprintf(stderr, "Failed to open NMEA port on %s!\n",serial_device );
+		return 0;
+	}
+
+	tcgetattr(ttyfd,&oldtio); // save current port settings
+	tcgetattr(ttyfd,&newtio);
+	// set new port settings for canonical input processing
+	newtio.c_cflag = B38400 | CRTSCTS | CS8 | CLOCAL ;
+	      newtio.c_iflag = IGNPAR;
+	      newtio.c_oflag = 0;
+	      newtio.c_lflag = 0;       //ICANON;
+	      newtio.c_cc[VMIN]=1;
+	      newtio.c_cc[VTIME]=0;
+	tcflush(ttyfd, TCIFLUSH);
+	tcsetattr(ttyfd,TCSANOW,&newtio);
+	if( write(ttyfd,testMessage,strlen(testMessage)) <= 0)
+	{
+		fprintf(stderr, "Failed to write to NMEA port %s!\n",serial_device );
+		return 0;
+	}
+
+	return 1;
 
 }
 
