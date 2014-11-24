@@ -246,6 +246,7 @@ int main(int argc, char *argv[]) {
 	sprintf(devfilename,"%s_%d",file_name,Modes.dev_index);
 
 	Modes.filename=devfilename;
+	file_name=devfilename;
 
 
 	if (share_nmea_via_ip && !initSocket(host, port)) {
