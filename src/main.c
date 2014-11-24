@@ -254,7 +254,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	if (hfnd && pfnd) share_nmea_via_ip =1;
-    //Make filename device unique
+	//Make filename device unique
 	devfilename= malloc(strlen(file_name) + 4);
 	sprintf(devfilename,"%s_%d",file_name,Modes.dev_index);
 
@@ -286,25 +286,25 @@ int main(int argc, char *argv[]) {
 	char *my_args[9];
 
 
-		my_args[0] = "rtl_fm";
-		/*
+	my_args[0] = "rtl_fm";
+	/*
 		         my_args[1] = "-h";
 		         my_args[2] = NULL;
-		 */
-		my_args[1] = malloc(strlen("-f 161975000"));
-		my_args[2] = malloc(20);
-		my_args[3] = malloc(20);
-		my_args[6] = malloc(10);
+	 */
+	my_args[1] = malloc(strlen("-f 161975000"));
+	my_args[2] = malloc(20);
+	my_args[3] = malloc(20);
+	my_args[6] = malloc(10);
 
-		sprintf(my_args[1],"-f %d",Modes.freq);// "-f 161975000" or 162025000;
-		sprintf(my_args[2],"-g %d",Modes.gain);//"-g 40";
-		sprintf(my_args[3],"-p %d",Modes.ppm_error);//"-p 95";
-		my_args[4] = "-s 48k";
-		my_args[5] = "-r 48k";
-		sprintf(my_args[6],"-d %d",Modes.dev_index);
-		my_args[7] = Modes.filename;
+	sprintf(my_args[1],"-f %d",Modes.freq);// "-f 161975000" or 162025000;
+	sprintf(my_args[2],"-g %d",Modes.gain);//"-g 40";
+	sprintf(my_args[3],"-p %d",Modes.ppm_error);//"-p 95";
+	my_args[4] = "-s 48k";
+	my_args[5] = "-r 48k";
+	sprintf(my_args[6],"-d %d",Modes.dev_index);
+	my_args[7] = Modes.filename;
 
-		my_args[8] = NULL;
+	my_args[8] = NULL;
 
 
 	pid_t pID = fork();
@@ -364,7 +364,7 @@ int initSocket(const char *host, const char *portname) {
 	struct addrinfo hints;
 	memset(&hints, 0, sizeof(hints));
 
-	 char* testMessage = "aisdecoder connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
+	char* testMessage = "aisdecoder connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
 	hints.ai_family=AF_UNSPEC;
 	hints.ai_socktype=SOCK_DGRAM;
 	hints.ai_protocol=IPPROTO_UDP;
@@ -427,8 +427,8 @@ int openTcpSocket(const char *host, const char *portname) {
 
 
 	if (protocol!=1) return -1;
-    if (! initSocket(host, portname)) return -1;
-    return 1;
+	if (! initSocket(host, portname)) return -1;
+	return 1;
 
 }
 
@@ -443,26 +443,28 @@ int openSerialOut()
 	//You can connect and listen to the console on your mac using
 	//screen /dev/tty.usbserial 38400
 	//exit using ctrl-a d
-	 char* testMessage = "aisdecoder nmea connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
-	 struct termios oldtio, newtio;       //place for old and new port settings for serial port
+	char* testMessage = "aisdecoder nmea connection\r\n";//"!AIVDM,1,1,,A,B3P<iS000?tsKD7IQ9SQ3wUUoP06,0*6F\r\n";
+	struct termios oldtio, newtio;       //place for old and new port settings for serial port
 	ttyfd = open(serial_device, O_RDWR);
 	if (ttyfd < 0 )
 	{
 		fprintf(stderr, "Failed to open NMEA port on %s!\n",serial_device );
 		return 0;
 	}
-
-	tcgetattr(ttyfd,&oldtio); // save current port settings
-	tcgetattr(ttyfd,&newtio);
-	// set new port settings for canonical input processing
-	newtio.c_cflag = B38400 | CRTSCTS | CS8 | CLOCAL ;
-	      newtio.c_iflag = IGNPAR;
-	      newtio.c_oflag = 0;
-	      newtio.c_lflag = 0;       //ICANON;
-	      newtio.c_cc[VMIN]=1;
-	      newtio.c_cc[VTIME]=0;
-	tcflush(ttyfd, TCIFLUSH);
-	tcsetattr(ttyfd,TCSANOW,&newtio);
+	if (strcmp(serial_device,"/dev/ttyO0")==0)
+	{
+		tcgetattr(ttyfd,&oldtio); // save current port settings
+		tcgetattr(ttyfd,&newtio);
+		// set new port settings for canonical input processing
+		newtio.c_cflag = B38400 | CRTSCTS | CS8 | CLOCAL ;
+		newtio.c_iflag = IGNPAR;
+		newtio.c_oflag = 0;
+		newtio.c_lflag = 0;       //ICANON;
+		newtio.c_cc[VMIN]=1;
+		newtio.c_cc[VTIME]=0;
+		tcflush(ttyfd, TCIFLUSH);
+		tcsetattr(ttyfd,TCSANOW,&newtio);
+	}
 	if( write(ttyfd,testMessage,strlen(testMessage)) <= 0)
 	{
 		fprintf(stderr, "Failed to write to NMEA port %s!\n",serial_device );
