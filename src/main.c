@@ -242,7 +242,7 @@ int main(int argc, char *argv[]) {
 
 	if (hfnd && pfnd) share_nmea_via_ip =1;
     //Make filename device unique
-	devfilename= malloc(strlen(file_name) + 2);
+	devfilename= malloc(strlen(file_name) + 4);
 	sprintf(devfilename,"%s_%d",file_name,Modes.dev_index);
 
 	Modes.filename=devfilename;
