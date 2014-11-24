@@ -456,7 +456,8 @@ int openSerialOut()
 		tcgetattr(ttyfd,&oldtio); // save current port settings
 		tcgetattr(ttyfd,&newtio);
 		// set new port settings for canonical input processing
-		newtio.c_cflag = B38400 | CRTSCTS | CS8 | CLOCAL ;
+		// NMEA 0183 for AIS - 38400, 8data, 1 stop bit , no parity, no handshake
+		newtio.c_cflag = B38400 | CS8 | CLOCAL ;
 		newtio.c_iflag = IGNPAR;
 		newtio.c_oflag = 0;
 		newtio.c_lflag = 0;       //ICANON;
