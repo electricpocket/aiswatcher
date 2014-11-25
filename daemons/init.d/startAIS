@@ -1,0 +1,10 @@
+#!/bin/bash
+# chkconfig: 345 99 10
+# description: auto start AIS receiver
+#
+case "$1" in
+ 'start')
+   su - root -c "cd /root/Development/aiswatcher/build ; sh runboth.sh > /var/log/ais.log 2> /var/log/ais_error.log &";;
+ 'stop')
+   echo "put something to shutdown or kill the process here";;
+esac

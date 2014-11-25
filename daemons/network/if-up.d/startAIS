@@ -1,0 +1,17 @@
+#!/bin/sh
+# Try to bring nmbd up when an interface comes up, if smbd is already running.
+# Don't bother to do anything for lo.
+set -e
+
+# Don't bother to restart sshd when lo is configured.
+if [ "$IFACE" != eth0 ]; then
+        exit 0
+fi
+if [ "$PHASE" != post-up ]; then
+        exit 0
+fi
+
+# start the service
+/etc/init.d/startAIS start
+
+exit 0
