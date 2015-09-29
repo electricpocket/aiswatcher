@@ -116,7 +116,7 @@ void nmea_sentence_received(const char *sentence,
 
 
 	} else {
-		if (buffer_count + length < MAX_BUFFER_LENGTH) {
+		if ((buffer_count + length) < MAX_BUFFER_LENGTH) {
 			memcpy(&buffer[buffer_count], sentence, length);
 			buffer_count += length;
 		} else {
